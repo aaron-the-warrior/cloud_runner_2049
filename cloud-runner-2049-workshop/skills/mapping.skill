@@ -1,0 +1,48 @@
+---
+name: mapping
+version: "1.0.0"
+description: Directivas para consultar coordenadas, calcular trayectos y generar GeoJSON usando Google Maps Remote MCP y herramientas geoespaciales.
+---
+
+# Habilidad: Operaciones Geoespaciales y Google Maps MCP
+
+Esta habilidad otorga al agente las instrucciones necesarias para consultar la cartografía de Las Vegas, generar rutas de maratón y verificar waypoints usando el servidor de **Google Maps Model Context Protocol (MCP)**.
+
+## 1. Directivas de Interacción con MCP Maps
+
+Cuando utilices herramientas remotas MCP de Google Maps:
+
+1. **Búsqueda de Puntos Clave (Landmarks):**
+   - Siempre consulta coordenadas de puntos emblemáticos en Las Vegas (ej. *Welcome to Fabulous Las Vegas Sign*, *Bellagio Fountains*, *Fremont Street Experience*, *The Sphere*, *Allegiant Stadium*).
+   - Utiliza nombres formales y la ciudad para evitar ambigüedades geográficas (`Las Vegas, NV`).
+
+2. **Cálculo de Distancias e Itinerarios:**
+   - La distancia oficial de un maratón debe calcularse siguiendo trayectos peatonales o viales cerrados al tráfico.
+   - Si calculas rutas entre dos waypoints, solicita la distancia en metros o kilómetros exactos con al menos 2 decimales.
+   - En caso de desvíos, calcula la suma de distancias euclidianas o segmentos de ruta proyectados.
+
+3. **Formato GeoJSON:**
+   - Todas las rutas generadas para exportación deben estructurarse bajo el estándar RFC 7946 (GeoJSON).
+   - El objeto principal debe ser un `FeatureCollection` o `Feature` con geometría `LineString` o `MultiLineString`.
+   - El orden de coordenadas en GeoJSON es estrictamente **[longitud, latitud]** (ej. `[-115.1728, 36.1147]`). ¡Nunca inviertas latitud y longitud!
+   - Cada waypoint o estación de soporte debe incluir propiedades descriptivas:
+     ```json
+     {
+       "type": "Feature",
+       "geometry": {
+         "type": "Point",
+         "coordinates": [-115.1728, 36.1147]
+       },
+       "properties": {
+         "name": "Puesto de Hidratación 01",
+         "km_marker": 5.0,
+         "type": "hydration_station"
+       }
+     }
+     ```
+
+## 2. Restricciones Urbanas en Las Vegas
+
+- **The Strip (Las Vegas Blvd):** Solo se permite el uso de carriles designados con permiso de eventos masivos.
+- **Evitar Intersecciones de Autopistas:** No trazar sobre I-15 o US-95 salvo puentes peatonales autorizados.
+- **Elevación y Pendiente:** Priorizar perfiles planos para garantizar récords de maratón y seguridad de los corredores.

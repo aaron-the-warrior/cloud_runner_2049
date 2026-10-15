@@ -1,0 +1,39 @@
+# Credenciales y secretos (NUNCA subir a git)
+.env
+*.env
+!.env.example
+
+# Entornos virtuales
+.venv/
+venv/
+ENV/
+env/
+
+# Caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.ruff_cache/
+
+# Archivos de depuración y estado de ADK
+.adk/
+
+# Logs y bases de datos temporales
+*.log
+*.db
+*.sqlite
+
+# Artefactos y reportes temporales
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Archivos temporales de SO y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,42 @@
+---
+name: race_director
+version: "1.0.0"
+description: Reglas oficiales de atletismo y logística de dirección de carrera para maratones de 42.195 km según estándares World Athletics y USATF.
+---
+
+# Habilidad: Dirección y Reglas Oficiales de Maratón (Race Director)
+
+Esta habilidad proporciona las directivas y criterios de validación que el agente planificador y el subagente evaluador deben aplicar rigurosamente para el diseño del circuito de maratón en Las Vegas 2049.
+
+## 1. Reglas Reglamentarias de Distancia
+
+- **Distancia Reglamentaria:**
+  - La distancia objetivo debe ser exactamente de **42.195 km** (26 millas y 385 yardas).
+  - En la fase de planificación de ruta, se acepta una tolerancia de calibración de **±0.25% (±105 metros)** para contemplar el factor de prevención de recorrido corto (Short Course Prevention Factor) exigido por World Athletics.
+  - Toda ruta fuera de `[42.090 km, 42.300 km]` debe ser **RECHAZADA** con indicación de ajuste.
+
+## 2. Puestos de Soporte e Hidratación
+
+- **Cadencia de Hidratación:**
+  - Los puestos de hidratación deben estar ubicados como máximo cada **5.0 km** a lo largo de todo el trayecto (ej. km 5, km 10, km 15, km 20, km 25, km 30, km 35, km 40).
+  - En climas desérticos como Las Vegas, si la temperatura esperada supera los 22°C, se deben añadir puestos intermedios de agua en los km 7.5, 12.5, 17.5, etc.
+- **Puestos de Asistencia Médica:**
+  - Carpas médicas obligatorias cada 10 km (km 10, 20, 30, 40) y una estación de trauma / recuperación intensiva en la Zona de Meta.
+
+## 3. Zonas de Salida y Meta (Start / Finish Zones)
+
+- **Línea de Salida (Start):**
+  - Requiere un área de concentración de corredores de al menos 15,000 m² con accesos peatonales fluidos.
+  - El ancho mínimo de la calzada de salida debe ser de 12 metros durante los primeros 2 km para evitar estampidas.
+- **Línea de Meta (Finish):**
+  - Embudo de desaceleración seguro de mínimo 400 metros tras cruzar la meta.
+  - Acceso inmediato a zona de hidratación de choque, entrega de medallas y hospital de campaña.
+  - Prohibido finalizar en pendientes descendentes pronunciadas o curvas cerradas de más de 90 grados a menos de 200m de la meta.
+
+## 4. Criterio de Decisión para LLM-as-a-Judge
+
+Al evaluar una propuesta de ruta, el evaluador debe emitir:
+- `verdict`: `"APPROVED"` o `"REJECTED"`.
+- `compliance_score`: Puntuación del 0.0 al 1.0 (mínimo 0.85 para aprobación).
+- `violations`: Lista detallada de inconsistencias detectadas.
+- `recommendations`: Acciones específicas de re-enrutamiento o adición de servicios.

@@ -1,0 +1,258 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -115.1728,
+            36.082
+          ],
+          [
+            -115.174,
+            36.088
+          ],
+          [
+            -115.1752,
+            36.0919
+          ],
+          [
+            -115.1748,
+            36.102
+          ],
+          [
+            -115.1764,
+            36.1126
+          ],
+          [
+            -115.168,
+            36.118
+          ],
+          [
+            -115.162,
+            36.1212
+          ],
+          [
+            -115.155,
+            36.126
+          ],
+          [
+            -115.1523,
+            36.1315
+          ],
+          [
+            -115.154,
+            36.14
+          ],
+          [
+            -115.1558,
+            36.1475
+          ],
+          [
+            -115.154,
+            36.152
+          ],
+          [
+            -115.1525,
+            36.1565
+          ],
+          [
+            -115.148,
+            36.162
+          ],
+          [
+            -115.145,
+            36.167
+          ],
+          [
+            -115.1442,
+            36.1695
+          ],
+          [
+            -115.1438,
+            36.1707
+          ]
+        ]
+      },
+      "properties": {
+        "name": "Circuito Oficial Maratón Las Vegas 2049",
+        "distance_km": 42.195,
+        "stroke": "#00FFCC",
+        "stroke-width": 4,
+        "standard": "World Athletics Grade A"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.1728,
+          36.082
+        ]
+      },
+      "properties": {
+        "name": "Línea de Salida (Start)",
+        "km": 0.0,
+        "amenities": "Corrales de salida, explanada 18,000 m², calzada 14m",
+        "marker-symbol": "star",
+        "marker-color": "#00E676"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.1438,
+          36.1707
+        ]
+      },
+      "properties": {
+        "name": "Línea de Meta (Finish)",
+        "km": 42.195,
+        "amenities": "Embudo seguro de 450m, carpa trauma, hidratación de choque",
+        "marker-symbol": "flag",
+        "marker-color": "#FFD700"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.1752,
+          36.0919
+        ]
+      },
+      "properties": {
+        "name": "Puesto Hidratación 01 - Mandalay Bay",
+        "km": 5.0,
+        "type": "hydration_station",
+        "marker-symbol": "water",
+        "marker-color": "#00B0FF"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.1764,
+          36.1126
+        ]
+      },
+      "properties": {
+        "name": "Puesto Hidratación 02 - Bellagio Fountains",
+        "km": 10.0,
+        "type": "hydration_station",
+        "marker-symbol": "water",
+        "marker-color": "#00B0FF"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.162,
+          36.1212
+        ]
+      },
+      "properties": {
+        "name": "Puesto Hidratación 03 - The Sphere",
+        "km": 15.0,
+        "type": "hydration_station",
+        "marker-symbol": "water",
+        "marker-color": "#00B0FF"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.1523,
+          36.1315
+        ]
+      },
+      "properties": {
+        "name": "Puesto Hidratación 04 - Convention Center",
+        "km": 20.0,
+        "type": "hydration_station",
+        "marker-symbol": "water",
+        "marker-color": "#00B0FF"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.1558,
+          36.1475
+        ]
+      },
+      "properties": {
+        "name": "Puesto Hidratación 05 - The STRAT",
+        "km": 25.0,
+        "type": "hydration_station",
+        "marker-symbol": "water",
+        "marker-color": "#00B0FF"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.1525,
+          36.1565
+        ]
+      },
+      "properties": {
+        "name": "Puesto Hidratación 06 - Arts District",
+        "km": 30.0,
+        "type": "hydration_station",
+        "marker-symbol": "water",
+        "marker-color": "#00B0FF"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.145,
+          36.167
+        ]
+      },
+      "properties": {
+        "name": "Puesto Hidratación 07 - Casino Center",
+        "km": 35.0,
+        "type": "hydration_station",
+        "marker-symbol": "water",
+        "marker-color": "#00B0FF"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.1442,
+          36.1695
+        ]
+      },
+      "properties": {
+        "name": "Puesto Hidratación 08 - Fremont East",
+        "km": 40.0,
+        "type": "hydration_station",
+        "marker-symbol": "water",
+        "marker-color": "#00B0FF"
+      }
+    }
+  ]
+}

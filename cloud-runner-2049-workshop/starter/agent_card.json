@@ -1,0 +1,57 @@
+{
+  "$schema": "https://a2a-protocol.org/schemas/v1/agent-card.json",
+  "name": "cloud-runner-2049-planner-starter",
+  "display_name": "Cloud Runner 2049 - Planificador de Maratón (Starter)",
+  "version": "0.1.0",
+  "description": "[TODO: Describe el propósito del agente planificador, su integración con ADK y A2A]",
+  "protocol": "A2A/1.0",
+  "endpoints": {
+    "invoke": "http://localhost:8080/a2a/v1/invoke",
+    "health": "http://localhost:8080/a2a/v1/health",
+    "card": "http://localhost:8080/.well-known/agent-card.json"
+  },
+  "capabilities": [
+    {
+      "name": "course_planning",
+      "description": "[TODO: Detalla la capacidad de planificar 42.195 km]"
+    },
+    {
+      "name": "geojson_export",
+      "description": "[TODO: Detalla la exportación en RFC 7946]"
+    },
+    {
+      "name": "race_director_evaluation",
+      "description": "[TODO: Detalla la validación con LLM-as-a-Judge]"
+    }
+  ],
+  "skills": [
+    {
+      "id": "mapping",
+      "path": "skills/mapping.skill",
+      "version": "1.0.0"
+    },
+    {
+      "id": "race_director",
+      "path": "skills/race_director.skill",
+      "version": "1.0.0"
+    }
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "city": { "type": "string" },
+      "target_distance_km": { "type": "number", "default": 42.195 }
+    },
+    "required": ["city", "target_distance_km"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "status": { "type": "string" },
+      "total_distance_km": { "type": "number" },
+      "evaluation_report": { "type": "object" },
+      "geojson_data": { "type": "object" }
+    },
+    "required": ["status", "total_distance_km", "evaluation_report"]
+  }
+}

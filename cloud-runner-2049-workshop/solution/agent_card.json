@@ -1,0 +1,116 @@
+{
+  "$schema": "https://a2a-protocol.org/schemas/v1/agent-card.json",
+  "name": "cloud-runner-2049-planner",
+  "display_name": "Cloud Runner 2049 - Planificador de Maratón",
+  "version": "1.0.0",
+  "description": "Agente autónomo para el diseño, calibración y validación reglamentaria de circuitos de maratón de 42.195 km en Las Vegas, conforme a las normativas de World Athletics y usando Google ADK, Remote MCP y el protocolo A2A.",
+  "protocol": "A2A/1.0",
+  "endpoints": {
+    "invoke": "http://localhost:8080/a2a/v1/invoke",
+    "health": "http://localhost:8080/a2a/v1/health",
+    "card": "http://localhost:8080/.well-known/agent-card.json"
+  },
+  "capabilities": [
+    {
+      "name": "course_planning",
+      "description": "Diseño de rutas viales y peatonales de maratón optimizadas con factor de sinuosidad urbana."
+    },
+    {
+      "name": "geojson_export",
+      "description": "Exportación del circuito, corrales de salida, meta y puestos de socorro bajo estándar RFC 7946."
+    },
+    {
+      "name": "race_director_evaluation",
+      "description": "Validación reflexiva en tiempo real mediante sub-agente LLM-as-a-Judge con ventana de contexto acotada."
+    },
+    {
+      "name": "remote_mcp_mapping",
+      "description": "Resolución de waypoints y cálculo de distancias usando Google Maps MCP."
+    }
+  ],
+  "skills": [
+    {
+      "id": "mapping",
+      "path": "skills/mapping.skill",
+      "version": "1.0.0",
+      "description": "Operaciones cartográficas, resolución de landmarks de Las Vegas y GeoJSON."
+    },
+    {
+      "id": "race_director",
+      "path": "skills/race_director.skill",
+      "version": "1.0.0",
+      "description": "Reglas de atletismo oficial: tolerancia ±0.25%, hidratación <= 5 km y seguridad en meta."
+    }
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "city": {
+        "type": "string",
+        "description": "Ciudad sede del evento",
+        "default": "Las Vegas, NV"
+      },
+      "target_distance_km": {
+        "type": "number",
+        "description": "Distancia oficial requerida (por defecto 42.195 km)",
+        "default": 42.195
+      },
+      "start_landmark": {
+        "type": "string",
+        "description": "Punto de salida oficial",
+        "default": "welcome_sign"
+      },
+      "finish_landmark": {
+        "type": "string",
+        "description": "Punto de meta oficial",
+        "default": "fremont_street"
+      },
+      "max_hydration_interval_km": {
+        "type": "number",
+        "description": "Espaciado máximo obligatorio entre estaciones de agua",
+        "default": 5.0
+      }
+    },
+    "required": ["city", "target_distance_km"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": ["SUCCESS", "FAILED"]
+      },
+      "event_name": {
+        "type": "string"
+      },
+      "total_distance_km": {
+        "type": "number"
+      },
+      "waypoints_count": {
+        "type": "integer"
+      },
+      "evaluation_report": {
+        "type": "object",
+        "properties": {
+          "verdict": { "type": "string", "enum": ["APPROVED", "REJECTED"] },
+          "compliance_score": { "type": "number" },
+          "distance_valid": { "type": "boolean" },
+          "hydration_valid": { "type": "boolean" },
+          "finish_safety_valid": { "type": "boolean" },
+          "summary": { "type": "string" }
+        },
+        "required": ["verdict", "compliance_score", "summary"]
+      },
+      "geojson_data": {
+        "type": "object",
+        "description": "FeatureCollection GeoJSON con el trazado y las estaciones de servicio"
+      }
+    },
+    "required": ["status", "total_distance_km", "evaluation_report"]
+  },
+  "metadata": {
+    "author": "Google Cloud Developer Community",
+    "license": "Apache-2.0",
+    "inspired_by": "Google Cloud Next '26 Keynote - Race Condition Simulation"
+  }
+}
