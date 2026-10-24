@@ -20,6 +20,7 @@ Cuando utilices herramientas remotas MCP de Google Maps:
    - La distancia oficial de un maratón debe calcularse siguiendo trayectos peatonales o viales cerrados al tráfico.
    - Si calculas rutas entre dos waypoints, solicita la distancia en metros o kilómetros exactos con al menos 2 decimales.
    - En caso de desvíos, calcula la suma de distancias euclidianas o segmentos de ruta proyectados.
+   - Las distancias del itinerario se obtienen por calles reales (perfil peatonal de OSRM / OpenStreetMap). Para calibrar a 42.195 km, repite landmarks formando vueltas y deja que el excedente (dentro del margen) se absorba adelantando la línea de salida.
 
 3. **Formato GeoJSON:**
    - Todas las rutas generadas para exportación deben estructurarse bajo el estándar RFC 7946 (GeoJSON).
