@@ -228,8 +228,8 @@ def main() -> None:
     print("🧪 Probando esqueleto de evaluador starter...")
     ejemplo = {
         "distancia_total_km": 42.195,
-        "linea_salida": "Welcome Sign",
-        "linea_meta": "Fremont Street (embudo 450m)",
+        "linea_salida": "Calzada de Amador",
+        "linea_meta": "Panamá Viejo (embudo 450m)",
         "puestos_hidratacion": [{"km": 5.0}, {"km": 10.0}, {"km": 15.0}, {"km": 20.0}],
     }
     reporte = evaluar_plan_carrera(ejemplo)

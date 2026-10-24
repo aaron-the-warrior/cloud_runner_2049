@@ -1,12 +1,12 @@
 ---
 name: race_director
 version: "1.0.0"
-description: Reglas oficiales de atletismo y logística de dirección de carrera para maratones de 42.195 km según estándares World Athletics y USATF.
+description: Reglas oficiales de atletismo y logística de dirección de carrera para maratones de 42.195 km según estándares World Athletics.
 ---
 
 # Habilidad: Dirección y Reglas Oficiales de Maratón (Race Director)
 
-Esta habilidad proporciona las directivas y criterios de validación que el agente planificador y el subagente evaluador deben aplicar rigurosamente para el diseño del circuito de maratón en Las Vegas 2049.
+Esta habilidad proporciona las directivas y criterios de validación que el agente planificador y el subagente evaluador deben aplicar rigurosamente para el diseño del circuito de maratón en Ciudad de Panamá 2049.
 
 ## 1. Reglas Reglamentarias de Distancia
 
@@ -19,7 +19,7 @@ Esta habilidad proporciona las directivas y criterios de validación que el agen
 
 - **Cadencia de Hidratación:**
   - Los puestos de hidratación deben estar ubicados como máximo cada **5.0 km** a lo largo de todo el trayecto (ej. km 5, km 10, km 15, km 20, km 25, km 30, km 35, km 40).
-  - En climas desérticos como Las Vegas, si la temperatura esperada supera los 22°C, se deben añadir puestos intermedios de agua en los km 7.5, 12.5, 17.5, etc.
+  - En climas tropicales húmedos como Ciudad de Panamá (27-32°C y humedad superior al 80%), si la temperatura esperada supera los 22°C, se deben añadir puestos intermedios de agua en los km 7.5, 12.5, 17.5, etc., y programar la salida antes del amanecer.
 - **Puestos de Asistencia Médica:**
   - Carpas médicas obligatorias cada 10 km (km 10, 20, 30, 40) y una estación de trauma / recuperación intensiva en la Zona de Meta.
 

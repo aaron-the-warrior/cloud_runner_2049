@@ -121,7 +121,7 @@ python solution/evaluator.py
 
 Observa cómo procesa la propuesta de ejemplo:
 - Detecta los puestos de hidratación en los km 5, 10, 15, 20, 25, 30, 35 y 40.
-- Valida la zona de amortiguación de la meta en Fremont Street.
+- Valida la zona de amortiguación de la meta en Panamá Viejo.
 - Emite un `compliance_score >= 0.85` y el veredicto oficial `APPROVED`.
 
 ---

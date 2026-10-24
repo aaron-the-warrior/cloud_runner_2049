@@ -78,7 +78,7 @@ Compón las instrucciones del sistema ensamblando las habilidades cargadas:
 
 ```python
 INSTRUCCIONES_PLANIFICADOR = f"""
-Eres el Planificador Oficial de Maratón para Cloud Runner 2049 en Las Vegas.
+Eres el Planificador Oficial de Maratón para Cloud Runner 2049 en Ciudad de Panamá.
 Utiliza las siguientes directivas especializadas:
 
 --- DIRECTIVAS GEOESPACIALES ---
@@ -87,7 +87,7 @@ Utiliza las siguientes directivas especializadas:
 --- REGLAMENTACIÓN OFICIAL DE CARRERA ---
 {SKILL_RACE_DIRECTOR}
 
-Tu objetivo es planificar un recorrido de exactamente 42.195 km por Las Vegas.
+Tu objetivo es planificar un recorrido de exactamente 42.195 km por Ciudad de Panamá.
 """
 ```
 
@@ -129,4 +129,4 @@ Deberás observar que el agente reconoce de inmediato la distancia reglamentaria
 ---
 
 ## 🚀 Próximo Paso
-En el [Lab 02: Remote MCP con Google Maps](file:///C:/Users/aaron/Documents/GDE/Workshops/cloud_runner_2049/cloud-runner-2049-workshop/labs/02-remote-mcp-maps.md), conectaremos herramientas cartográficas remotas para consultar coordenadas reales en Las Vegas y calcular itinerarios viales.
+En el [Lab 02: Remote MCP con Google Maps](file:///C:/Users/aaron/Documents/GDE/Workshops/cloud_runner_2049/cloud-runner-2049-workshop/labs/02-remote-mcp-maps.md), conectaremos herramientas cartográficas remotas para consultar coordenadas reales en Ciudad de Panamá y calcular itinerarios viales.

@@ -28,6 +28,9 @@ dev = [
     "ruff>=0.4.0",
 ]
 
+[tool.hatch.build.targets.wheel]
+packages = ["solution", "starter"]
+
 [tool.ruff]
 line-length = 100
 target-version = "py311"

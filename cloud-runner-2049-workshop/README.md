@@ -14,7 +14,7 @@
 
 Guía completa y taller práctico paso a paso para aprender a diseñar, orquestar y validar sistemas multi-agente avanzados en Python utilizando el **Agent Development Kit (ADK)** de Google, directivas modulares con **Progressive Disclosure (`.skill`)**, integración cartográfica desacoplada con **Model Context Protocol (Remote MCP)**, evaluación reflexiva e imparcial con **LLM-as-a-Judge** y comunicación estándar entre agentes mediante el protocolo **Agent-to-Agent (A2A)**.
 
-El taller está inspirado en la demostración central de Google Cloud Next: [Race Condition (Las Vegas Marathon Multi-Agent Simulation)](https://github.com/GoogleCloudPlatform/race-condition).
+El taller está inspirado en la demostración central de Google Cloud Next: [Race Condition (Las Vegas Marathon Multi-Agent Simulation)](https://github.com/GoogleCloudPlatform/race-condition), y adaptado para trazar el maratón en la **Ciudad de Panamá** (Calzada de Amador, Casco Antiguo, Cinta Costera y Panamá Viejo).
 
 > [!TIP]
 > El taller está optimizado para ejecutarse en **Windows PowerShell** o en **Linux / macOS (Bash)**. Toda la base de código, documentación técnica, habilidades y salidas de consola están localizadas 100% en **español**.
@@ -82,7 +82,7 @@ En este taller implementarás cinco pilares de la ingeniería de software agént
    Para evitar saturar la ventana de contexto del LLM (*context pollution*), el agente no recibe cientos de líneas de normativas en su prompt inicial. En su lugar, carga dinámicamente archivos `.skill` con frontmatter YAML bajo demanda (ej. directivas cartográficas o reglas de atletismo).
 
 3. **Herramientas Desacopladas con Model Context Protocol (Remote MCP):**
-   Las herramientas de cálculo de itinerario y cartografía de Las Vegas se exponen mediante el estándar abierto MCP, permitiendo que cualquier agente consuma servicios externos de manera uniforme.
+   Las herramientas de cálculo de itinerario y cartografía de Ciudad de Panamá se exponen mediante el estándar abierto MCP, permitiendo que cualquier agente consuma servicios externos de manera uniforme.
 
 4. **Patrón LLM-as-a-Judge con Ventana de Contexto Acotada:**
    Un problema crítico en agentes autónomos complejos es el *agent drift* (deriva de objetivos) y el sesgo de complacencia cuando un agente se evalúa a sí mismo. Aquí desacoplamos la validación en un **sub-agente juez** independiente que ejecuta cada evaluación en un turno aislado (*isolated turn*), forzando una respuesta tipada con Pydantic.
@@ -107,7 +107,7 @@ flowchart TD
     end
 
     subgraph Tools["🛠️ Herramientas Cartográficas & MCP"]
-        Tool1["📍 consultar_landmarks_las_vegas()"]
+        Tool1["📍 consultar_landmarks_panama()"]
         Tool2["📏 calcular_itinerario_maraton()"]
         Tool3["💾 exportar_geojson_rfc7946()"]
     end
@@ -242,7 +242,7 @@ GOOGLE_GENAI_USE_VERTEXAI="FALSE"
 | Laboratorio | Título | Enfoque Principal | Guía Detallada |
 | :---: | :--- | :--- | :---: |
 | **Lab 01** | **Google ADK & Progressive Skills** | Declaración de `Agent`, convención `root_agent` y carga dinámica de `.skill`. | [01-adk-planner-skills.md](file:///C:/Users/aaron/Documents/GDE/Workshops/cloud_runner_2049/cloud-runner-2049-workshop/labs/01-adk-planner-skills.md) |
-| **Lab 02** | **Remote MCP & Cartografía GeoJSON** | Herramientas cartográficas de Las Vegas y exportación GeoJSON RFC 7946 con coordenadas `[lon, lat]`. | [02-remote-mcp-maps.md](file:///C:/Users/aaron/Documents/GDE/Workshops/cloud_runner_2049/cloud-runner-2049-workshop/labs/02-remote-mcp-maps.md) |
+| **Lab 02** | **Remote MCP & Cartografía GeoJSON** | Herramientas cartográficas de Ciudad de Panamá y exportación GeoJSON RFC 7946 con coordenadas `[lon, lat]`. | [02-remote-mcp-maps.md](file:///C:/Users/aaron/Documents/GDE/Workshops/cloud_runner_2049/cloud-runner-2049-workshop/labs/02-remote-mcp-maps.md) |
 | **Lab 03** | **LLM-as-a-Judge & Agent Drift** | Creación del sub-agente evaluador en contexto acotado, validación con Pydantic y bucle de reflexión. | [03-evaluator-subagent.md](file:///C:/Users/aaron/Documents/GDE/Workshops/cloud_runner_2049/cloud-runner-2049-workshop/labs/03-evaluator-subagent.md) |
 | **Lab 04** | **Orquestación A2A & Agent Card** | Publicación del contrato de capacidades `Agent Card` y orquestación inter-agente. | [04-a2a-orchestration.md](file:///C:/Users/aaron/Documents/GDE/Workshops/cloud_runner_2049/cloud-runner-2049-workshop/labs/04-a2a-orchestration.md) |
 
@@ -258,7 +258,7 @@ En este laboratorio aprenderás cómo estructurar un agente profesional con **Go
 
 ### Lab 02: Remote MCP y Cartografía GeoJSON RFC 7946
 En este laboratorio dotarás al agente de capacidades espaciales:
-- Implementación de herramientas nativas de Python: `consultar_landmarks_las_vegas` y `calcular_itinerario_maraton`.
+- Implementación de herramientas nativas de Python: `consultar_landmarks_panama` y `calcular_itinerario_maraton`.
 - Aplicación estricta de la norma **RFC 7946**: orden `[longitud, latitud]` para evitar errores comunes de inversión geográfica.
 - Generación y serialización de una `FeatureCollection` con la línea de carrera (`LineString`) y puestos de apoyo (`Point`).
 
@@ -331,7 +331,7 @@ solution/marathon_route.geojson
 Puedes inspeccionar visualmente el archivo generado por el agente en cualquier visor GeoJSON:
 1. Abre tu navegador y accede a [geojson.io](https://geojson.io/).
 2. Haz clic en **Open** > **File** y selecciona el archivo `solution/marathon_route.geojson`.
-3. Verás el trazado completo comenzando en el emblemático *Welcome to Fabulous Las Vegas Sign*, recorriendo The Strip, pasando por The Sphere y el Arts District, y culminando con el embudo de seguridad en *Fremont Street Experience*.
+3. Verás el trazado completo comenzando en la emblemática *Calzada de Amador*, atravesando el Casco Antiguo, recorriendo la Cinta Costera hasta Punta Paitilla y culminando con el embudo de seguridad en *Panamá Viejo*.
 
 ---
 
@@ -393,7 +393,7 @@ ADK_MODEL="gemini-4-argon"
 
 ### 4. Coordenadas GeoJSON invertidas en el mapa
 - **Causa:** Muchas librerías usan `[latitud, longitud]`, pero el estándar oficial **RFC 7946** exige obligatoriamente `[longitud, latitud]`.
-- **Solución:** Verifica que el primer valor sea la longitud (negativa en Las Vegas, ej. `-115.1728`) y el segundo sea la latitud (positiva, ej. `36.0820`).
+- **Solución:** Verifica que el primer valor sea la longitud (negativa en Ciudad de Panamá, ej. `-79.5268`) y el segundo sea la latitud (positiva, ej. `8.9147`).
 
 ---
 
