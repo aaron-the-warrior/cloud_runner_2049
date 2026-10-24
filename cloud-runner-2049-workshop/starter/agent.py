@@ -3,7 +3,7 @@
 En este laboratorio construirás el agente planificador principal con Google ADK.
 El agente debe:
 1. Cargar progresivamente las directivas de 'mapping.skill' y 'race_director.skill'.
-2. Conectar herramientas cartográficas de Las Vegas (simulación de Google Maps MCP).
+2. Conectar herramientas cartográficas de Ciudad de Panamá (simulación de Google Maps MCP).
 3. Evaluar su propuesta con el sub-agente evaluador (starter/evaluator.py).
 4. Generar el trazado oficial de 42.195 km en formato GeoJSON RFC 7946.
 
@@ -77,57 +77,57 @@ SKILL_RACE_DIRECTOR = cargar_skill("race_director.skill")
 
 
 # ==============================================================================
-# 2. Herramientas Geoespaciales y Base Cartográfica de Las Vegas
+# 2. Herramientas Geoespaciales y Base Cartográfica de Ciudad de Panamá
 # ==============================================================================
-LANDMARKS_LAS_VEGAS: dict[str, dict[str, Any]] = {
-    "welcome_sign": {
-        "nombre": "Welcome to Fabulous Las Vegas Sign",
-        "coordenadas": [-115.1728, 36.0820],
-        "descripcion": "Extremo sur del Strip, punto de partida icónico.",
+LANDMARKS_PANAMA: dict[str, dict[str, Any]] = {
+    "calzada_amador": {
+        "nombre": "Calzada de Amador",
+        "coordenadas": [-79.5268, 8.9147],
+        "descripcion": "Causeway a la entrada del Canal, punto de partida icónico.",
     },
-    "mandalay_bay": {
-        "nombre": "Mandalay Bay Resort",
-        "coordenadas": [-115.1752, 36.0919],
+    "biomuseo": {
+        "nombre": "Biomuseo",
+        "coordenadas": [-79.5459, 8.9323],
         "descripcion": "Punto de avituallamiento inicial.",
     },
-    "bellagio": {
-        "nombre": "Bellagio Fountains",
-        "coordenadas": [-115.1764, 36.1126],
-        "descripcion": "Centro neurálgico del Strip, calzada ancha de 16m.",
+    "casco_antiguo": {
+        "nombre": "Casco Antiguo - Plaza de la Independencia",
+        "coordenadas": [-79.5352, 8.9524],
+        "descripcion": "Centro histórico Patrimonio de la Humanidad.",
     },
-    "the_sphere": {
-        "nombre": "The Sphere Las Vegas",
-        "coordenadas": [-115.1620, 36.1212],
-        "descripcion": "Desvío icónico este.",
+    "mercado_mariscos": {
+        "nombre": "Mercado de Mariscos",
+        "coordenadas": [-79.5333, 8.9593],
+        "descripcion": "Enlace entre Cinta Costera 3 y Avenida Balboa.",
     },
-    "convention_center": {
-        "nombre": "Las Vegas Convention Center",
-        "coordenadas": [-115.1523, 36.1315],
-        "descripcion": "Zona amplia de soporte médico.",
+    "monumento_balboa": {
+        "nombre": "Monumento a Vasco Núñez de Balboa",
+        "coordenadas": [-79.5279, 8.9683],
+        "descripcion": "Zona amplia de soporte médico en la Cinta Costera.",
     },
-    "stratosphere": {
-        "nombre": "The STRAT Hotel & Tower",
-        "coordenadas": [-115.1558, 36.1475],
-        "descripcion": "Transición entre Strip norte y Downtown.",
+    "parque_urraca": {
+        "nombre": "Parque Urracá",
+        "coordenadas": [-79.5214, 8.9737],
+        "descripcion": "Área verde arbolada para hidratación media.",
     },
-    "arts_district": {
-        "nombre": "Las Vegas Arts District",
-        "coordenadas": [-115.1525, 36.1565],
-        "descripcion": "Distrito cultural con sombraje para hidratación media.",
+    "punta_paitilla": {
+        "nombre": "Punta Paitilla",
+        "coordenadas": [-79.5110, 8.9789],
+        "descripcion": "Transición entre Cinta Costera y Vía Israel.",
     },
-    "fremont_street": {
-        "nombre": "Fremont Street Experience",
-        "coordenadas": [-115.1438, 36.1707],
-        "descripcion": "Meta peatonal con embudo seguro de 450m.",
+    "panama_viejo": {
+        "nombre": "Conjunto Monumental de Panamá Viejo",
+        "coordenadas": [-79.4858, 9.0058],
+        "descripcion": "Meta histórica con embudo seguro de 450m.",
     },
 }
 
 
-def consultar_landmarks_las_vegas(filtro: str = "") -> list[dict[str, Any]]:
+def consultar_landmarks_panama(filtro: str = "") -> list[dict[str, Any]]:
     """Consulta los puntos clave (landmarks) disponibles para el trazado del circuito."""
     resultados = []
     filtro_norm = filtro.lower().strip()
-    for clave, datos in LANDMARKS_LAS_VEGAS.items():
+    for clave, datos in LANDMARKS_PANAMA.items():
         if not filtro_norm or filtro_norm in clave or filtro_norm in datos["nombre"].lower():
             resultados.append({"id": clave, **datos})
     return resultados
@@ -138,7 +138,7 @@ def consultar_landmarks_las_vegas(filtro: str = "") -> list[dict[str, Any]]:
 # ==============================================================================
 def calcular_itinerario_maraton(waypoints_ids: list[str]) -> dict[str, Any]:
     """Calcula la distancia acumulada y valida los puntos de paso del maratón."""
-    # TODO 2: Itera sobre los waypoints_ids, valida que existan en LANDMARKS_LAS_VEGAS
+    # TODO 2: Itera sobre los waypoints_ids, valida que existan en LANDMARKS_PANAMA
     # y calcula la distancia aproximada. Recuerda que la distancia oficial objetivo
     # es 42.195 km con rango permitido [42.090 km, 42.300 km].
     if len(waypoints_ids) < 2:
@@ -185,14 +185,14 @@ def herramienta_evaluar_con_race_director(propuesta_carrera_json: str) -> str:
 # TODO 4: Configura el prompt del sistema y las herramientas disponibles para el
 # agente planificador utilizando `Agent` de Google ADK.
 INSTRUCCIONES_PLANIFICADOR = f"""
-Eres el Planificador Oficial de Maratón para Cloud Runner 2049 en Las Vegas.
+Eres el Planificador Oficial de Maratón para Cloud Runner 2049 en Ciudad de Panamá.
 Utiliza las siguientes directivas:
 
 {SKILL_MAPPING}
 
 {SKILL_RACE_DIRECTOR}
 
-Diseña un circuito que comience en Welcome Sign y termine en Fremont Street,
+Diseña un circuito que comience en la Calzada de Amador y termine en Panamá Viejo,
 con exactamente 42.195 km, puestos de agua cada 5 km y meta segura.
 Valida tu propuesta con la herramienta del Juez (race director) antes de responder.
 """
@@ -203,7 +203,7 @@ planner_agent = Agent(
     description="Agente planificador de circuitos de maratón 2049.",
     instruction=INSTRUCCIONES_PLANIFICADOR,
     tools=[
-        consultar_landmarks_las_vegas,
+        consultar_landmarks_panama,
         calcular_itinerario_maraton,
         herramienta_evaluar_con_race_director,
     ],
@@ -266,10 +266,10 @@ def generar_geojson_oficial(archivo_salida: Path | str | None = None) -> dict[st
     # el trazado y `geojson.Point` para los puestos de hidratación cada 5 km.
     # Recuerda el orden de coordenadas: [longitud, latitud].
     ruta_coords = [
-        [-115.1728, 36.0820],
-        [-115.1764, 36.1126],
-        [-115.1523, 36.1315],
-        [-115.1438, 36.1707],
+        [-79.5268, 8.9147],
+        [-79.5352, 8.9524],
+        [-79.5279, 8.9683],
+        [-79.4858, 9.0058],
     ]
     linea = geojson.Feature(
         geometry=geojson.LineString(ruta_coords),
@@ -287,7 +287,7 @@ def generar_geojson_oficial(archivo_salida: Path | str | None = None) -> dict[st
 
 def main() -> None:
     print("🚀 Ejecutando agente planificador starter...")
-    solicitud = "Diseña el circuito de maratón Las Vegas 2049 y valida el recorrido."
+    solicitud = "Diseña el circuito de maratón Ciudad de Panamá 2049 y valida el recorrido."
     respuesta = ejecutar_agente_adk(planner_agent, solicitud)
     print("\nResultado:")
     print(respuesta)

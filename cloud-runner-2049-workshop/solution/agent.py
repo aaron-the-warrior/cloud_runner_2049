@@ -78,46 +78,46 @@ SKILL_RACE_DIRECTOR = cargar_skill("race_director.skill")
 # ==============================================================================
 # 2. Base de Datos Cartográfica y Herramientas Geoespaciales (Maps MCP Interface)
 # ==============================================================================
-LANDMARKS_LAS_VEGAS: dict[str, dict[str, Any]] = {
-    "welcome_sign": {
-        "nombre": "Welcome to Fabulous Las Vegas Sign",
-        "coordenadas": [-115.1728, 36.0820],  # [longitud, latitud]
-        "descripcion": "Extremo sur del Strip, zona icónica de inicio con amplia explanada.",
+LANDMARKS_PANAMA: dict[str, dict[str, Any]] = {
+    "calzada_amador": {
+        "nombre": "Calzada de Amador",
+        "coordenadas": [-79.5268, 8.9147],  # [longitud, latitud]
+        "descripcion": "Causeway entre islas a la entrada del Canal, zona icónica de inicio con amplia explanada.",
     },
-    "mandalay_bay": {
-        "nombre": "Mandalay Bay Resort",
-        "coordenadas": [-115.1752, 36.0919],
-        "descripcion": "Acceso al Strip sur, punto de avituallamiento inicial.",
+    "biomuseo": {
+        "nombre": "Biomuseo",
+        "coordenadas": [-79.5459, 8.9323],
+        "descripcion": "Acceso a la Calzada de Amador, punto de avituallamiento inicial.",
     },
-    "bellagio": {
-        "nombre": "Bellagio Fountains",
-        "coordenadas": [-115.1764, 36.1126],
-        "descripcion": "Centro neurálgico del Strip, calzada ancha de 16m.",
+    "casco_antiguo": {
+        "nombre": "Casco Antiguo - Plaza de la Independencia",
+        "coordenadas": [-79.5352, 8.9524],
+        "descripcion": "Centro histórico Patrimonio de la Humanidad, calles adoquinadas y estrechas.",
     },
-    "the_sphere": {
-        "nombre": "The Sphere Las Vegas",
-        "coordenadas": [-115.1620, 36.1212],
-        "descripcion": "Desvío este icónico por Sands Ave y Manhattan Rd.",
+    "mercado_mariscos": {
+        "nombre": "Mercado de Mariscos",
+        "coordenadas": [-79.5333, 8.9593],
+        "descripcion": "Enlace entre la Cinta Costera 3 y la Avenida Balboa.",
     },
-    "convention_center": {
-        "nombre": "Las Vegas Convention Center",
-        "coordenadas": [-115.1523, 36.1315],
-        "descripcion": "Zona amplia con gran capacidad de soporte médico y logístico.",
+    "monumento_balboa": {
+        "nombre": "Monumento a Vasco Núñez de Balboa",
+        "coordenadas": [-79.5279, 8.9683],
+        "descripcion": "Cinta Costera, zona amplia con gran capacidad de soporte médico y logístico.",
     },
-    "stratosphere": {
-        "nombre": "The STRAT Hotel & Tower",
-        "coordenadas": [-115.1558, 36.1475],
-        "descripcion": "Transición entre Strip norte y el distrito histórico Downtown.",
+    "parque_urraca": {
+        "nombre": "Parque Urracá",
+        "coordenadas": [-79.5214, 8.9737],
+        "descripcion": "Área verde arbolada sobre Avenida Balboa, ideal para hidratación media.",
     },
-    "arts_district": {
-        "nombre": "Las Vegas Arts District",
-        "coordenadas": [-115.1525, 36.1565],
-        "descripcion": "Calles amplias con sombreado urbano ideal para hidratación media.",
+    "punta_paitilla": {
+        "nombre": "Punta Paitilla",
+        "coordenadas": [-79.5110, 8.9789],
+        "descripcion": "Transición entre la Cinta Costera y la Vía Israel con brisa marina.",
     },
-    "fremont_street": {
-        "nombre": "Fremont Street Experience",
-        "coordenadas": [-115.1438, 36.1707],
-        "descripcion": "Meta histórica peatonal con 500m de zona de desaceleración y hospital de campaña.",
+    "panama_viejo": {
+        "nombre": "Conjunto Monumental de Panamá Viejo",
+        "coordenadas": [-79.4858, 9.0058],
+        "descripcion": "Meta histórica frente a la Torre de la Catedral con 500m de zona de desaceleración y hospital de campaña.",
     },
 }
 
@@ -140,7 +140,7 @@ def calcular_distancia_haversine(coord1: list[float], coord2: list[float]) -> fl
     return radio_tierra_km * c
 
 
-def consultar_landmarks_las_vegas(filtro: str = "") -> list[dict[str, Any]]:
+def consultar_landmarks_panama(filtro: str = "") -> list[dict[str, Any]]:
     """Consulta los puntos clave (landmarks) disponibles para el trazado del circuito.
 
     Args:
@@ -148,7 +148,7 @@ def consultar_landmarks_las_vegas(filtro: str = "") -> list[dict[str, Any]]:
     """
     resultados = []
     filtro_normalizado = filtro.lower().strip()
-    for clave, datos in LANDMARKS_LAS_VEGAS.items():
+    for clave, datos in LANDMARKS_PANAMA.items():
         if (
             not filtro_normalizado
             or filtro_normalizado in clave
@@ -163,13 +163,13 @@ def calcular_itinerario_maraton(waypoints_ids: list[str]) -> dict[str, Any]:
     """Calcula la distancia acumulada y valida la secuencia de puntos de paso de la carrera.
 
     Args:
-        waypoints_ids: Lista ordenada de identificadores de landmarks (ej. ['welcome_sign', 'bellagio', ...])
+        waypoints_ids: Lista ordenada de identificadores de landmarks (ej. ['calzada_amador', 'casco_antiguo', ...])
     """
     puntos_encontrados = []
     for wid in waypoints_ids:
-        if wid not in LANDMARKS_LAS_VEGAS:
-            return {"error": f"El landmark '{wid}' no existe en la base de datos de Las Vegas."}
-        puntos_encontrados.append(LANDMARKS_LAS_VEGAS[wid])
+        if wid not in LANDMARKS_PANAMA:
+            return {"error": f"El landmark '{wid}' no existe en la base de datos de Ciudad de Panamá."}
+        puntos_encontrados.append(LANDMARKS_PANAMA[wid])
 
     if len(puntos_encontrados) < 2:
         return {"error": "Se requieren al menos 2 waypoints para calcular un trayecto."}
@@ -232,7 +232,7 @@ def herramienta_evaluar_con_race_director(propuesta_carrera_json: str) -> str:
 # 3. Agente Planificador Principal con ADK
 # ==============================================================================
 INSTRUCCIONES_PLANIFICADOR = f"""
-Eres el Planificador Maestro de Circuitos de Maratón para Cloud Runner 2049 en Las Vegas.
+Eres el Planificador Maestro de Circuitos de Maratón para Cloud Runner 2049 en Ciudad de Panamá.
 Tu misión es diseñar un recorrido oficial de maratón completo que cumpla con los más altos
 estándares de World Athletics, aprovechando las capacidades del Agent Development Kit (ADK)
 y Google Maps MCP.
@@ -246,8 +246,8 @@ Tienes a tu disposición las siguientes directivas especializadas:
 {SKILL_RACE_DIRECTOR}
 
 FLUJO DE TRABAJO OBLIGATORIO:
-1. Consulta los landmarks de Las Vegas usando 'consultar_landmarks_las_vegas'.
-2. Traza un recorrido que inicie en 'Welcome to Fabulous Las Vegas Sign' y finalice en 'Fremont Street Experience'.
+1. Consulta los landmarks de Ciudad de Panamá usando 'consultar_landmarks_panama'.
+2. Traza un recorrido que inicie en 'Calzada de Amador' y finalice en 'Conjunto Monumental de Panamá Viejo'.
 3. Ajusta los waypoints y loops urbanos para alcanzar EXACTAMENTE 42.195 km (tolerancia 42.090 a 42.300 km).
 4. Distribuye puestos de hidratación cada <= 5.0 km (ej. km 5, 10, 15, 20, 25, 30, 35, 40).
 5. Incluye puestos médicos y una zona de desaceleración segura en la meta (>= 400m).
@@ -262,7 +262,7 @@ planner_agent = Agent(
     description="Agente autónomo planificador de circuitos de maratón 2049 con validación reflexiva.",
     instruction=INSTRUCCIONES_PLANIFICADOR,
     tools=[
-        consultar_landmarks_las_vegas,
+        consultar_landmarks_panama,
         calcular_itinerario_maraton,
         herramienta_evaluar_con_race_director,
     ],
@@ -277,25 +277,25 @@ root_agent = planner_agent
 # ==============================================================================
 def generar_geojson_oficial(archivo_salida: Path | str | None = None) -> dict[str, Any]:
     """Genera la FeatureCollection GeoJSON oficial del maratón Cloud Runner 2049."""
-    # Coordenadas calibradas del trazado oficial de 42.195 km por Las Vegas
+    # Coordenadas calibradas del trazado oficial de 42.195 km por Ciudad de Panamá
     coordenadas_trazado = [
-        [-115.1728, 36.0820],  # Km 0: Welcome Sign (Salida)
-        [-115.1740, 36.0880],
-        [-115.1752, 36.0919],  # Km 5: Mandalay Bay (Hidratación 1)
-        [-115.1748, 36.1020],
-        [-115.1764, 36.1126],  # Km 10: Bellagio (Hidratación 2 + Médico)
-        [-115.1680, 36.1180],
-        [-115.1620, 36.1212],  # Km 15: The Sphere (Hidratación 3)
-        [-115.1550, 36.1260],
-        [-115.1523, 36.1315],  # Km 20: Convention Center (Hidratación 4 + Médico)
-        [-115.1540, 36.1400],
-        [-115.1558, 36.1475],  # Km 25: Stratosphere Base (Hidratación 5)
-        [-115.1540, 36.1520],
-        [-115.1525, 36.1565],  # Km 30: Arts District (Hidratación 6 + Médico)
-        [-115.1480, 36.1620],
-        [-115.1450, 36.1670],  # Km 35: Casino Center Blvd (Hidratación 7)
-        [-115.1442, 36.1695],  # Km 40: Fremont East (Hidratación 8 + Médico)
-        [-115.1438, 36.1707],  # Km 42.195: Fremont Street Experience (Meta)
+        [-79.5268, 8.9147],  # Km 0: Calzada de Amador (Salida)
+        [-79.5380, 8.9230],
+        [-79.5459, 8.9323],  # Km 5: Biomuseo (Hidratación 1)
+        [-79.5420, 8.9440],
+        [-79.5352, 8.9524],  # Km 10: Casco Antiguo (Hidratación 2 + Médico)
+        [-79.5345, 8.9565],
+        [-79.5333, 8.9593],  # Km 15: Mercado de Mariscos (Hidratación 3)
+        [-79.5310, 8.9640],
+        [-79.5279, 8.9683],  # Km 20: Monumento a Balboa (Hidratación 4 + Médico)
+        [-79.5245, 8.9712],
+        [-79.5214, 8.9737],  # Km 25: Parque Urracá (Hidratación 5)
+        [-79.5160, 8.9765],
+        [-79.5110, 8.9789],  # Km 30: Punta Paitilla (Hidratación 6 + Médico)
+        [-79.5050, 8.9850],
+        [-79.4992, 8.9905],  # Km 35: Coco del Mar (Hidratación 7)
+        [-79.4933, 9.0001],  # Km 40: Atlapa (Hidratación 8 + Médico)
+        [-79.4858, 9.0058],  # Km 42.195: Panamá Viejo (Meta)
     ]
 
     features = []
@@ -304,7 +304,7 @@ def generar_geojson_oficial(archivo_salida: Path | str | None = None) -> dict[st
     linea_carrera = geojson.Feature(
         geometry=geojson.LineString(coordenadas_trazado),
         properties={
-            "name": "Circuito Oficial Maratón Las Vegas 2049",
+            "name": "Circuito Oficial Maratón Ciudad de Panamá 2049",
             "distance_km": 42.195,
             "stroke": "#00FFCC",
             "stroke-width": 4,
@@ -316,7 +316,7 @@ def generar_geojson_oficial(archivo_salida: Path | str | None = None) -> dict[st
     # 2. Puntos clave: Salida y Meta
     features.append(
         geojson.Feature(
-            geometry=geojson.Point([-115.1728, 36.0820]),
+            geometry=geojson.Point([-79.5268, 8.9147]),
             properties={
                 "name": "Línea de Salida (Start)",
                 "km": 0.0,
@@ -328,7 +328,7 @@ def generar_geojson_oficial(archivo_salida: Path | str | None = None) -> dict[st
     )
     features.append(
         geojson.Feature(
-            geometry=geojson.Point([-115.1438, 36.1707]),
+            geometry=geojson.Point([-79.4858, 9.0058]),
             properties={
                 "name": "Línea de Meta (Finish)",
                 "km": 42.195,
@@ -341,14 +341,14 @@ def generar_geojson_oficial(archivo_salida: Path | str | None = None) -> dict[st
 
     # 3. Puestos de hidratación cada 5 km
     estaciones_hidratacion = [
-        ("Puesto Hidratación 01 - Mandalay Bay", 5.0, [-115.1752, 36.0919]),
-        ("Puesto Hidratación 02 - Bellagio Fountains", 10.0, [-115.1764, 36.1126]),
-        ("Puesto Hidratación 03 - The Sphere", 15.0, [-115.1620, 36.1212]),
-        ("Puesto Hidratación 04 - Convention Center", 20.0, [-115.1523, 36.1315]),
-        ("Puesto Hidratación 05 - The STRAT", 25.0, [-115.1558, 36.1475]),
-        ("Puesto Hidratación 06 - Arts District", 30.0, [-115.1525, 36.1565]),
-        ("Puesto Hidratación 07 - Casino Center", 35.0, [-115.1450, 36.1670]),
-        ("Puesto Hidratación 08 - Fremont East", 40.0, [-115.1442, 36.1695]),
+        ("Puesto Hidratación 01 - Biomuseo", 5.0, [-79.5459, 8.9323]),
+        ("Puesto Hidratación 02 - Casco Antiguo", 10.0, [-79.5352, 8.9524]),
+        ("Puesto Hidratación 03 - Mercado de Mariscos", 15.0, [-79.5333, 8.9593]),
+        ("Puesto Hidratación 04 - Monumento a Balboa", 20.0, [-79.5279, 8.9683]),
+        ("Puesto Hidratación 05 - Parque Urracá", 25.0, [-79.5214, 8.9737]),
+        ("Puesto Hidratación 06 - Punta Paitilla", 30.0, [-79.5110, 8.9789]),
+        ("Puesto Hidratación 07 - Coco del Mar", 35.0, [-79.4992, 8.9905]),
+        ("Puesto Hidratación 08 - Atlapa", 40.0, [-79.4933, 9.0001]),
     ]
 
     for nombre, km_val, coord in estaciones_hidratacion:
@@ -429,10 +429,10 @@ def planificar_maraton() -> str:
     print("=" * 70)
 
     solicitud_usuario = """
-Diseña el circuito oficial del maratón Las Vegas 2049.
+Diseña el circuito oficial del maratón Ciudad de Panamá 2049.
 Requisitos:
 - Distancia reglamentaria de 42.195 km según World Athletics.
-- Puntos emblemáticos: Iniciar en Welcome Sign y finalizar en Fremont Street.
+- Puntos emblemáticos: Iniciar en la Calzada de Amador y finalizar en Panamá Viejo.
 - Puestos de hidratación cada 5.0 km o menos.
 - Asistencia médica y meta segura.
 - Valida la propuesta con el Race Director Judge antes de entregar la respuesta final.

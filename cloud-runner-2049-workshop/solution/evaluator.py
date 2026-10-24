@@ -100,7 +100,7 @@ def construir_instrucciones_evaluador() -> str:
     """Construye las instrucciones para el LLM-as-a-Judge con contexto acotado."""
     reglas = cargar_directivas_carrera()
     return f"""
-Eres el Juez Oficial de Carrera (Race Director Evaluator) para el maratón Cloud Runner 2049 en Las Vegas.
+Eres el Juez Oficial de Carrera (Race Director Evaluator) para el maratón Cloud Runner 2049 en Ciudad de Panamá.
 Tu función es actuar como un árbitro imparcial (LLM-as-a-Judge) con ventana de contexto acotada.
 
 NO arrastres conversaciones previas ni asumas intenciones. Evalúa ÚNICAMENTE la propuesta suministrada
@@ -236,20 +236,22 @@ def main() -> None:
     print("=" * 60)
 
     propuesta_valida_ejemplo = {
-        "nombre_evento": "Las Vegas Neon Marathon 2049",
+        "nombre_evento": "Maratón del Canal de Panamá 2049",
         "distancia_total_km": 42.195,
-        "linea_salida": "Las Vegas Blvd Sur frente a Welcome to Fabulous Las Vegas Sign (calzada 14m)",
-        "linea_meta": "Fremont Street Experience con 450m de embudo de desaceleración e hidratación de choque",
+        "linea_salida": "Calzada de Amador frente a Isla Perico (calzada 14m)",
+        "linea_meta": "Vía Cincuentenario frente a Panamá Viejo con 450m de embudo de desaceleración e hidratación de choque",
         "puestos_hidratacion": [
-            {"km": 5.0, "ubicacion": "Mandalay Bay Plaza"},
-            {"km": 10.0, "ubicacion": "Bellagio Fountains"},
-            {"km": 15.0, "ubicacion": "The Sphere"},
-            {"km": 20.0, "ubicacion": "Convention Center"},
-            {"km": 25.0, "ubicacion": "Stratosphere Tower Base"},
-            {"km": 30.0, "ubicacion": "Arts District Norte"},
-            {"km": 35.0, "ubicacion": "Cashman Center"},
-            {"km": 40.0, "ubicacion": "Fremont East District"},
+            {"km": 5.0, "ubicacion": "Biomuseo"},
+            {"km": 10.0, "ubicacion": "Casco Antiguo"},
+            {"km": 15.0, "ubicacion": "Mercado de Mariscos"},
+            {"km": 20.0, "ubicacion": "Monumento a Balboa"},
+            {"km": 25.0, "ubicacion": "Parque Urracá"},
+            {"km": 30.0, "ubicacion": "Punta Paitilla"},
+            {"km": 35.0, "ubicacion": "Coco del Mar"},
+            {"km": 40.0, "ubicacion": "Atlapa"},
         ],
+        "puestos_agua_intermedios_km": [7.5, 12.5, 17.5, 22.5, 27.5, 32.5, 37.5],
+        "hora_salida": "05:00 (antes del amanecer, clima tropical húmedo)",
         "asistencia_medica": ["km 10", "km 20", "km 30", "km 40", "Zona de Meta (Hospital de campaña)"],
     }
 

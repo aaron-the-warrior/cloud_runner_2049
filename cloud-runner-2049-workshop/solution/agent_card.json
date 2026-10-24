@@ -3,7 +3,7 @@
   "name": "cloud-runner-2049-planner",
   "display_name": "Cloud Runner 2049 - Planificador de Maratón",
   "version": "1.0.0",
-  "description": "Agente autónomo para el diseño, calibración y validación reglamentaria de circuitos de maratón de 42.195 km en Las Vegas, conforme a las normativas de World Athletics y usando Google ADK, Remote MCP y el protocolo A2A.",
+  "description": "Agente autónomo para el diseño, calibración y validación reglamentaria de circuitos de maratón de 42.195 km en Ciudad de Panamá, conforme a las normativas de World Athletics y usando Google ADK, Remote MCP y el protocolo A2A.",
   "protocol": "A2A/1.0",
   "endpoints": {
     "invoke": "http://localhost:8080/a2a/v1/invoke",
@@ -33,7 +33,7 @@
       "id": "mapping",
       "path": "skills/mapping.skill",
       "version": "1.0.0",
-      "description": "Operaciones cartográficas, resolución de landmarks de Las Vegas y GeoJSON."
+      "description": "Operaciones cartográficas, resolución de landmarks de Ciudad de Panamá y GeoJSON."
     },
     {
       "id": "race_director",
@@ -48,7 +48,7 @@
       "city": {
         "type": "string",
         "description": "Ciudad sede del evento",
-        "default": "Las Vegas, NV"
+        "default": "Ciudad de Panamá, PA"
       },
       "target_distance_km": {
         "type": "number",
@@ -58,12 +58,12 @@
       "start_landmark": {
         "type": "string",
         "description": "Punto de salida oficial",
-        "default": "welcome_sign"
+        "default": "calzada_amador"
       },
       "finish_landmark": {
         "type": "string",
         "description": "Punto de meta oficial",
-        "default": "fremont_street"
+        "default": "panama_viejo"
       },
       "max_hydration_interval_km": {
         "type": "number",

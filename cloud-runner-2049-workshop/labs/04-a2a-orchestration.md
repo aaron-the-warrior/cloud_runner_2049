@@ -91,10 +91,10 @@ agent_card = json.loads((BASE_DIR / "solution" / "agent_card.json").read_text(en
 
 # 2. Carga del payload de solicitud inter-agente
 payload_solicitud = {
-    "city": "Las Vegas, NV",
+    "city": "Ciudad de Panamá, PA",
     "target_distance_km": 42.195,
-    "start_landmark": "welcome_sign",
-    "finish_landmark": "fremont_street",
+    "start_landmark": "calzada_amador",
+    "finish_landmark": "panama_viejo",
     "max_hydration_interval_km": 5.0,
 }
 

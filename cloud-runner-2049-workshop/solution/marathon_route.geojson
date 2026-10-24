@@ -7,77 +7,77 @@
         "type": "LineString",
         "coordinates": [
           [
-            -115.1728,
-            36.082
+            -79.5268,
+            8.9147
           ],
           [
-            -115.174,
-            36.088
+            -79.538,
+            8.923
           ],
           [
-            -115.1752,
-            36.0919
+            -79.5459,
+            8.9323
           ],
           [
-            -115.1748,
-            36.102
+            -79.542,
+            8.944
           ],
           [
-            -115.1764,
-            36.1126
+            -79.5352,
+            8.9524
           ],
           [
-            -115.168,
-            36.118
+            -79.5345,
+            8.9565
           ],
           [
-            -115.162,
-            36.1212
+            -79.5333,
+            8.9593
           ],
           [
-            -115.155,
-            36.126
+            -79.531,
+            8.964
           ],
           [
-            -115.1523,
-            36.1315
+            -79.5279,
+            8.9683
           ],
           [
-            -115.154,
-            36.14
+            -79.5245,
+            8.9712
           ],
           [
-            -115.1558,
-            36.1475
+            -79.5214,
+            8.9737
           ],
           [
-            -115.154,
-            36.152
+            -79.516,
+            8.9765
           ],
           [
-            -115.1525,
-            36.1565
+            -79.511,
+            8.9789
           ],
           [
-            -115.148,
-            36.162
+            -79.505,
+            8.985
           ],
           [
-            -115.145,
-            36.167
+            -79.4992,
+            8.9905
           ],
           [
-            -115.1442,
-            36.1695
+            -79.4933,
+            9.0001
           ],
           [
-            -115.1438,
-            36.1707
+            -79.4858,
+            9.0058
           ]
         ]
       },
       "properties": {
-        "name": "Circuito Oficial Maratón Las Vegas 2049",
+        "name": "Circuito Oficial Maratón Ciudad de Panamá 2049",
         "distance_km": 42.195,
         "stroke": "#00FFCC",
         "stroke-width": 4,
@@ -89,8 +89,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115.1728,
-          36.082
+          -79.5268,
+          8.9147
         ]
       },
       "properties": {
@@ -106,8 +106,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115.1438,
-          36.1707
+          -79.4858,
+          9.0058
         ]
       },
       "properties": {
@@ -123,12 +123,12 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115.1752,
-          36.0919
+          -79.5459,
+          8.9323
         ]
       },
       "properties": {
-        "name": "Puesto Hidratación 01 - Mandalay Bay",
+        "name": "Puesto Hidratación 01 - Biomuseo",
         "km": 5.0,
         "type": "hydration_station",
         "marker-symbol": "water",
@@ -140,12 +140,12 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115.1764,
-          36.1126
+          -79.5352,
+          8.9524
         ]
       },
       "properties": {
-        "name": "Puesto Hidratación 02 - Bellagio Fountains",
+        "name": "Puesto Hidratación 02 - Casco Antiguo",
         "km": 10.0,
         "type": "hydration_station",
         "marker-symbol": "water",
@@ -157,12 +157,12 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115.162,
-          36.1212
+          -79.5333,
+          8.9593
         ]
       },
       "properties": {
-        "name": "Puesto Hidratación 03 - The Sphere",
+        "name": "Puesto Hidratación 03 - Mercado de Mariscos",
         "km": 15.0,
         "type": "hydration_station",
         "marker-symbol": "water",
@@ -174,12 +174,12 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115.1523,
-          36.1315
+          -79.5279,
+          8.9683
         ]
       },
       "properties": {
-        "name": "Puesto Hidratación 04 - Convention Center",
+        "name": "Puesto Hidratación 04 - Monumento a Balboa",
         "km": 20.0,
         "type": "hydration_station",
         "marker-symbol": "water",
@@ -191,12 +191,12 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115.1558,
-          36.1475
+          -79.5214,
+          8.9737
         ]
       },
       "properties": {
-        "name": "Puesto Hidratación 05 - The STRAT",
+        "name": "Puesto Hidratación 05 - Parque Urracá",
         "km": 25.0,
         "type": "hydration_station",
         "marker-symbol": "water",
@@ -208,12 +208,12 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115.1525,
-          36.1565
+          -79.511,
+          8.9789
         ]
       },
       "properties": {
-        "name": "Puesto Hidratación 06 - Arts District",
+        "name": "Puesto Hidratación 06 - Punta Paitilla",
         "km": 30.0,
         "type": "hydration_station",
         "marker-symbol": "water",
@@ -225,12 +225,12 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115.145,
-          36.167
+          -79.4992,
+          8.9905
         ]
       },
       "properties": {
-        "name": "Puesto Hidratación 07 - Casino Center",
+        "name": "Puesto Hidratación 07 - Coco del Mar",
         "km": 35.0,
         "type": "hydration_station",
         "marker-symbol": "water",
@@ -242,12 +242,12 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -115.1442,
-          36.1695
+          -79.4933,
+          9.0001
         ]
       },
       "properties": {
-        "name": "Puesto Hidratación 08 - Fremont East",
+        "name": "Puesto Hidratación 08 - Atlapa",
         "km": 40.0,
         "type": "hydration_station",
         "marker-symbol": "water",

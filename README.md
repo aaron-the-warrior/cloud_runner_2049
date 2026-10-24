@@ -14,7 +14,7 @@
 
 Guía completa y taller práctico paso a paso para aprender a diseñar, orquestar y validar sistemas multi-agente avanzados en Python utilizando el **Agent Development Kit (ADK)** de Google, directivas modulares con **Progressive Disclosure (`.skill`)**, integración cartográfica desacoplada con **Model Context Protocol (Remote MCP)**, evaluación reflexiva e imparcial con **LLM-as-a-Judge** y comunicación estándar entre agentes mediante el protocolo **Agent-to-Agent (A2A)**.
 
-El taller está inspirado en la demostración central de Google Cloud Next: [Race Condition (Las Vegas Marathon Multi-Agent Simulation)](https://github.com/GoogleCloudPlatform/race-condition).
+El taller está inspirado en la demostración central de Google Cloud Next: [Race Condition (Las Vegas Marathon Multi-Agent Simulation)](https://github.com/GoogleCloudPlatform/race-condition), y adaptado para trazar el maratón en la **Ciudad de Panamá** (Calzada de Amador, Casco Antiguo, Cinta Costera y Panamá Viejo).
 
 > [!TIP]
 > El proyecto completo del taller se encuentra en la carpeta [`cloud-runner-2049-workshop`](file:///C:/Users/aaron/Documents/GDE/Workshops/cloud_runner_2049/cloud-runner-2049-workshop). Para comenzar de inmediato, consulta la [Documentación Completa del Taller](file:///C:/Users/aaron/Documents/GDE/Workshops/cloud_runner_2049/cloud-runner-2049-workshop/README.md).
@@ -92,7 +92,7 @@ flowchart TD
     end
 
     subgraph Tools["🛠️ Herramientas Cartográficas & MCP"]
-        Tool1["📍 consultar_landmarks_las_vegas()"]
+        Tool1["📍 consultar_landmarks_panama()"]
         Tool2["📏 calcular_itinerario_maraton()"]
         Tool3["💾 exportar_geojson_rfc7946()"]
     end
